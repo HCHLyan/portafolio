@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio</title>
+    <meta name="description" content="Esta es mi primera práctica web, en la que haré un portafolio" />
+    <meta name="keywords" content="portafolio, mascotas, web" />
+    <meta name="author" content="Lyan Páez" />
+    <meta name="robots" content="index, follow" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <img
+        class="logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Umbrella_Corporation_logo.svg/330px-Umbrella_Corporation_logo.svg.png"
+        alt="Logo Umbrella Corporation"
+      />
+      <span>Lyan Páez</span>
+      <nav>
+        <ul>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#interactividad">Interactividad</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="/mascotas.html">Mascotas</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="mi-video">
+        <h2>Un poco de inspiración</h2>
+        <p>Aquí tienes un video random para acompañar la visita a mi portafolio:</p>
+        
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/jfKfPfyJRdk" 
+            title="Video de YouTube" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+      <section id="sobre-mi">
+        <h1>Sobre mí</h1>
+        <p>Soy alguien a quien le gusta aprender y mejorar cada día.</p>
+      </section>
+
+      <section id="proyectos">
+        <h2>Proyectos</h2>
+        <ul class="proyectos-grid">
+          <li class="card"><a href="#">Primer proyecto</a></li>
+          <li class="card"><a href="#">Segundo proyecto</a></li>
+          <li class="card"><a href="#">Tercer proyecto</a></li>
+        </ul>
+      </section>
+
+      <section id="interactividad">
+        <h2>Zona Interactiva</h2>
+        <p id="parrafo-dinamico">Este texto cambiará cuando presiones el botón.</p>
+        <button id="btn-cambiar" class="btn">Cambiar Texto</button>
+
+        <button id="btn-toggle" class="btn">Mostrar/Ocultar Secreto</button>
+        <div id="caja-secreta" class="oculto">
+          <p>¡Felicidades! Has descubierto el mensaje oculto usando JavaScript.</p>
+        </div>
+      </section>
+
+      <section id="contacto">
+         <form>
+          <h2>Contacto</h2>
+          <input type="text" placeholder="Ingresa tu nombre" required />
+          <input type="number" placeholder="Ingresa tu número" required />
+          <input type="email" placeholder="Ingresa tu correo" required />
+          <input type="text" placeholder="¿Qué me quieres decir?" />
+          <button type="submit" class="btn">Enviar</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+  <div class="footer-container">
+
+    <!-- Sección de enlaces -->
+    <section class="footer-column">
+      <h3>Te puede interesar</h3>
+      <ul>
+        <li><a href="#">Accesibilidad</a></li>
+        <li><a href="#">Acerca de nosotros</a></li>
+      </ul>
+    </section>
+
+    <!-- Sección legal -->
+    <section class="footer-column">
+      <h3>Legales</h3>
+      <ul>
+        <li><a href="#">Protección de datos</a></li>
+      </ul>
+    </section>
+
+    <!-- Contacto -->
+    <section class="footer-column">
+      <h3>Contáctanos</h3>
+      <p>Medellín - Colombia</p>
+    </section>
+
+    <!-- Info adicional -->
+    <section class="footer-column">
+      <p>Productos y servicios...</p>
+    </section>
+
+  </div>
+</footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
