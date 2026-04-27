@@ -1,4 +1,8 @@
-/* TASK 4: Variables globales en :root */
+/* =========================================
+   VARIABLES GLOBALES (:root)
+   ========================================= */
+/* Definimos colores, fuentes y sombras para reutilizarlas en todo el código.
+   Si en el futuro quieres cambiar el fondo, solo cambias el valor aquí y se actualizará en toda la página. */
 :root {
   --color-fondo: rgb(209, 241, 241);
   --color-texto: #1a1a1a;
@@ -11,46 +15,66 @@
 }
 
 /* =========================================
-   ESTILOS BASE
+   RESETEO BÁSICO
    ========================================= */
-body {
-  font-family: var(--fuente-principal);
-  font-size: 1rem; /* TASK 3: Texto relativo */
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
+/* Quita los márgenes y paddings por defecto que ponen los navegadores para tener un diseño limpio */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* TASK 3: Imágenes responsivas por defecto */
+/* =========================================
+   ESTILOS BASE (Cuerpo de la página)
+   ========================================= */
+body {
+  font-family: var(--fuente-principal); 
+  font-size: 1rem; 
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  
+  /* AQUÍ EMPIEZA LA MAGIA PARA EL FOOTER */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Obliga al body a medir al menos el 100% del alto de la pantalla (Viewport Height) */
+}
+
+main {
+  flex: 1;
+}
+
+/* =========================================
+   IMÁGENES Y ENLACES
+   ========================================= */
 img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 15%;
+  max-width: 100%; /* Hace que la imagen nunca se salga del ancho de su contenedor (Responsiva) */
+  height: auto; /* Mantiene la proporción original de la imagen */
+  border-radius: 15%; /* Bordes ligeramente redondeados */
   box-shadow: var(--sombra-basica);
-  transition: all 0.3s ease; /* Transición suave para el hover */
+  transition: all 0.3s ease; /* Efecto de transición suave al pasar el mouse (hover) */
 }
 
+/* Efecto al poner el cursor sobre las imágenes */
 img:hover {
-  border-radius: 50%;
+  border-radius: 50%; /* Se vuelve un círculo perfecto */
   box-shadow: var(--sombra-hover);
-  transform: scale(1.1);
-  cursor: pointer;
+  transform: scale(1.1); /* Hace que crezca un 10% */
+  cursor: pointer; /* Cambia el cursor a una manito */
 }
 
 a {
   color: var(--color-texto);
-  text-decoration: none;
+  text-decoration: none; /* Le quita el subrayado a los enlaces */
 }
 
 a:hover {
   color: var(--color-resalte);
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* Crece ligeramente al pasar el cursor */
 }
 
+/* Quita las viñetas (puntitos) de las listas */
 ul {
   list-style: none;
-  padding: 0;
 }
 
 .amarillo {
@@ -58,11 +82,10 @@ ul {
 }
 
 /* =========================================
-   COMPONENTES Y AGRUPACIONES (TASK 4)
+   ESTILOS DE LOS BOTONES
    ========================================= */
-/* Agrupamos estilos de elementos interactivos/tarjetas */
 .btn {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem; /* Espaciado interno: arriba/abajo 0.5rem, lados 1rem */
   margin-top: 0.5rem;
   background-color: var(--color-bordes);
   color: white;
@@ -72,26 +95,30 @@ ul {
 }
 
 .btn:hover {
-  background-color: var(--color-resalte);
+  background-color: var(--color-resalte); /* Cambia a rojo cuando pasas el cursor */
 }
 
+/* =========================================
+   TARJETAS Y ELEMENTOS OCULTOS
+   ========================================= */
 .card {
   border: 1px solid var(--color-bordes);
   padding: 1rem;
-  text-align: center;
+  text-align: center; /* Centra el texto de la tarjeta */
 }
 
+/* Esta clase es la que quita y pone el JavaScript para esconder la caja secreta */
 .oculto {
   display: none;
 }
 
 /* =========================================
-   LAYOUTS
+   LAYOUTS (CABECERA Y MENÚ)
    ========================================= */
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; /* Convierte el header en una caja flexible (elementos uno al lado del otro) */
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: space-between; /* Empuja el logo a la izq y el menú a la der */
   padding: 2rem;
 }
 
@@ -101,22 +128,36 @@ header {
 }
 
 nav ul {
-  display: flex;
+  display: flex; /* Pone los enlaces del menú en horizontal */
   justify-content: space-around;
-  gap: 1.5rem;
+  gap: 1.5rem; /* Separación entre los botones del menú */
 }
 
+/* Estilos del botón hamburguesa (Oculto en PC, solo se ve en móviles) */
+.hamburger {
+  display: none; /* Lo oculta por defecto */
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--color-texto);
+}
+
+/* =========================================
+   GRILLAS (CSS GRID)
+   ========================================= */
 /* Proyectos (Escritorio: 3 columnas) */
 .proyectos-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas del mismo tamaño */
   gap: 1.5rem;
+  padding: 1rem;
 }
 
-/* Galería (Escritorio: 6 columnas) */
+/* Galería de Mascotas (Escritorio: 6 columnas) */
 .container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, 1fr); /* Crea 6 columnas */
   gap: 1rem;
   padding: 1rem;
 }
@@ -127,119 +168,137 @@ article {
   text-align: center;
 }
 
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* =========================================
+   VIDEO DE YOUTUBE
+   ========================================= */
+.video-container {
+  max-width: 600px; /* Evita que el video sea gigantesco en pantallas grandes */
+  margin: 1rem auto; /* Lo centra horizontalmente */
+  aspect-ratio: 16 / 9; /* Mantiene la proporción rectangular típica de video */
+  width: 100%;
 }
 
-/* Footer principal */
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px; /* Bordes redonditos */
+  box-shadow: var(--sombra-basica);
+}
+
+/* =========================================
+   FOOTER (PIE DE PÁGINA)
+   ========================================= */
 .footer {
-  background-color: #1f1f1f; /* Fondo oscuro */
+  background-color: #1f1f1f; /* Fondo gris oscuro */
   color: #fff;
-  font-family: Arial, sans-serif;
 }
 
-/* Contenedor de columnas */
 .footer-container {
   display: grid;
-
-  /* 4 columnas como en la imagen */
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 40px; /* Espacio entre columnas */
+  grid-template-columns: repeat(4, 1fr); /* 4 Columnas para los enlaces del footer */
+  gap: 40px;
   padding: 50px;
 }
 
-/* Cada columna */
 .footer-column h3 {
   margin-bottom: 15px;
   font-size: 16px;
 }
 
-/* Lista sin estilos */
-.footer-column ul {
-  list-style: none;
-}
-
-/* Espaciado entre items */
 .footer-column ul li {
   margin-bottom: 10px;
 }
 
-/* Links */
-.footer-column a {
-  text-decoration: none;
-  color: #ccc;
+.footer-column a, .footer-column p {
+  color: #ccc; /* Texto gris claro para el footer */
   font-size: 14px;
 }
 
-/* Hover elegante */
 .footer-column a:hover {
-  color: #fff;
+  color: #fff; /* Al pasar el mouse, el texto brilla en blanco */
 }
 
-/* Texto normal */
-.footer-column p {
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: 10px;
-}
-
-/* Redes sociales */
-.social-icons {
-  margin-top: 15px;
-}
-
-.social-icons a {
-  margin-right: 10px;
-  font-size: 18px;
-  text-decoration: none;
-}
-
-/* Parte inferior */
 .footer-bottom {
-  background-color: #e5e5e5;
+  background-color: #e5e5e5; /* Franja clara al final */
   color: #000;
   text-align: center;
   padding: 15px;
   font-size: 14px;
 }
 
-
 /* =========================================
-   MEDIA QUERIES (TASK 2)
+   MEDIA QUERIES (DISEÑO RESPONSIVO)
    ========================================= */
 
-/* TABLETS: Pantallas medianas (Máx 1024px) */
+/* TABLETS Y PANTALLAS MEDIANAS (Máx 1024px de ancho) */
 @media (max-width: 1024px) {
   .proyectos-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 Columnas */
+    grid-template-columns: repeat(2, 1fr); /* Proyectos a 2 Columnas */
   }
+  
+  /* AQUÍ: La grilla de mascotas pasa a 3 columnas (2 filas) */
   .container {
-    grid-template-columns: repeat(3, 1fr); /* 3 Columnas */
+    grid-template-columns: repeat(3, 1fr); 
+  }
+  
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr); /* Footer a 2 columnas */
   }
 }
 
-/* MÓVILES: Pantallas pequeñas (Máx 768px) */
+/* MÓVILES GRANDES / TABLETS PEQUEÑAS (Máx 768px de ancho) */
 @media (max-width: 768px) {
   header {
-    flex-direction: column; /* Menú en columna */
-    text-align: center;
-    gap: 1rem;
+    flex-direction: row; 
+    position: relative; 
+    padding: 1rem;
   }
   
+  .hamburger {
+    display: block; 
+  }
+
+  nav {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background-color: var(--color-fondo);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+    z-index: 10; 
+  }
+
+  nav.activo {
+    display: block; 
+  }
+
   nav ul {
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    text-align: center;
   }
 
   .proyectos-grid {
-    grid-template-columns: 1fr; /* 1 Columna */
+    grid-template-columns: 1fr; /* Proyectos a 1 columna */
   }
 
+  /* AQUÍ: La grilla de mascotas pasa a 2 columnas (3 filas) */
   .container {
-    grid-template-columns: repeat(2, 1fr); /* 2 Columnas */
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr; /* Footer a 1 columna */
+    text-align: center;
+  }
+}
+
+/* MÓVILES PEQUEÑOS (Máx 480px de ancho) */
+@media (max-width: 480px) {
+  /* AQUÍ: La grilla de mascotas pasa a 1 columna (6 filas) */
+  .container {
+    grid-template-columns: repeat(1, 1fr); 
   }
 }

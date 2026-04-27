@@ -1,31 +1,60 @@
-// TASK 5: Muestra un mensaje de bienvenida en pantalla
-// window.onload asegura que el mensaje salga cuando la página ya cargó completamente
-window.onload = function() {
-    alert("¡Bienvenido a la nueva versión de mi portafolio responsivo!");
-};
+// ==========================================
+// INTERACTIVIDAD BÁSICA DEL DOM
+// ==========================================
 
-// TASK 5: Cambiar el texto de un párrafo al hacer clic
 const btnCambiar = document.getElementById("btn-cambiar");
 const parrafoDinamico = document.getElementById("parrafo-dinamico");
 
-btnCambiar.addEventListener("click", function() {
-    parrafoDinamico.textContent = "¡Magia! El DOM ha sido manipulado con éxito usando JavaScript.";
-    parrafoDinamico.style.color = "blue"; // Agregamos un cambio de color visual
-});
+// Verificamos si los elementos existen en la página actual antes de darles eventos
+if (btnCambiar && parrafoDinamico) {
+    btnCambiar.addEventListener("click", function() {
+        parrafoDinamico.textContent = "¡Magia! El DOM ha sido manipulado con éxito usando JavaScript.";
+        parrafoDinamico.style.color = "blue"; 
+    });
+}
 
-// TASK 5: Efecto dinámico (mostrar/ocultar contenido)
+// ==========================================
+// EFECTO DINÁMICO: MOSTRAR / OCULTAR
+// ==========================================
+
 const btnToggle = document.getElementById("btn-toggle");
 const cajaSecreta = document.getElementById("caja-secreta");
 
-btnToggle.addEventListener("click", function() {
-    // Verificamos si la caja tiene la clase 'oculto'
-    if (cajaSecreta.classList.contains("oculto")) {
-        // Si está oculta, le quitamos la clase y la mostramos
-        cajaSecreta.classList.remove("oculto");
-        btnToggle.textContent = "Ocultar Secreto";
-    } else {
-        // Si está visible, le volvemos a poner la clase
-        cajaSecreta.classList.add("oculto");
-        btnToggle.textContent = "Mostrar Secreto";
-    }
-});
+if (btnToggle && cajaSecreta) {
+    btnToggle.addEventListener("click", function() {
+        if (cajaSecreta.classList.contains("oculto")) {
+            cajaSecreta.classList.remove("oculto");
+            btnToggle.textContent = "Ocultar Secreto";
+        } else {
+            cajaSecreta.classList.add("oculto");
+            btnToggle.textContent = "Mostrar Secreto";
+        }
+    });
+}
+
+// ==========================================
+// MENÚ DE HAMBURGUESA PARA MÓVILES
+// ==========================================
+
+const btnHamburguesa = document.getElementById("btn-hamburguesa");
+const navMenu = document.getElementById("nav-menu");
+
+if (btnHamburguesa && navMenu) {
+    btnHamburguesa.addEventListener("click", function() {
+        navMenu.classList.toggle("activo");
+    });
+}
+
+// ==========================================
+// CERRAR EL MENÚ AL HACER CLIC EN UN ENLACE
+// ==========================================
+
+const enlacesNav = document.querySelectorAll("#nav-menu ul li a");
+
+if (enlacesNav.length > 0) {
+    enlacesNav.forEach(enlace => {
+        enlace.addEventListener("click", function() {
+            navMenu.classList.remove("activo");
+        });
+    });
+}
